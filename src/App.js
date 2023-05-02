@@ -1,35 +1,45 @@
+import { useState } from "react"
 
-const Hello = (props) =>{
+const Display =({counter})=> <div>{counter}</div>
+const Button =({handleClick,text}) => <button onClick={handleClick}>{text}</button>
 
-  const bornYear =() =>{
-    const yearNow = new Date().getFullYear()
-    return yearNow-props.age
-  }
-
-  return(
-    <div>
-      <p>
-        Hello {props.name}, you are {props.age} years old. 
-      </p>  
-      <p>So You were probably born in the year {bornYear()}</p>
-    </div>
-  )
-}
-
-// keshav jrall
 
 const App = () => {
-  
-  const name = "keshav"
-  const age = 21
-
-
-  return(
-    <div>
-    <h1>Greetings</h1>
-    <Hello name = {name} age = {age} />
-  </div>
-  )
+  const [counter, setCounter] = useState(0)
+  console.log('rendering with counter value', counter)
+  const addByOne = () => {
+    setCounter(counter+1)
+    console.log('addByOne>>>',counter)
   }
+  const minusByOne = () => {
+    setCounter(counter-1)
+    console.log('minusByOne>>>',counter)
+  }
+  const setToZero = () => {
+    setCounter(0)
+    console.log('setToZero>>>',counter)
+  }
+  console.log("rendering counter,....", counter)
+  
 
+
+  return (
+    <div>
+     <Display counter ={counter}/>
+      <Button handleClick = {addByOne}
+      text = "Add"/>
+
+
+      <Button handleClick ={minusByOne}
+        text='minus'
+      />
+
+      <Button handleClick = {setToZero}
+      text='Reset'/>
+
+    </div>
+
+
+  )
+}
 export default App
