@@ -28,7 +28,7 @@ const App =() =>{
       if(props.allClicks.length ===0){
         return(
           <div>
-            the app is used by clicking
+            This app is used by clicking
           </div>
         )
       }
